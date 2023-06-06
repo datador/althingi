@@ -1,0 +1,40 @@
+name: althingi
+channels:
+  - anaconda
+  - conda-forge
+dependencies:
+  - python=3.8
+  - requests
+  - beautifulsoup4
+  - pandas
+  - numpy
+  - matplotlib
+  - scipy
+  - ipykernel
+  - moviepy
+  - opencv=4.7.0.72  # exact version added
+  - pytesseract
+  - pydub
+  - google-cloud-storage
+  - google-cloud-speech
+  - google-auth
+  - pip:
+    - opencv-python==4.7.0.72  # fallback in case opencv is not available in conda-forge
+
+
+
+
+# old
+# name: althyngi
+# channels:
+#   - defaults
+# dependencies:
+#   - python=3.8
+#   - requests
+#   - beautifulsoup4
+#   - pandas
+#   - numpy
+#   - matplotlib
+#   - scipy
+#   - ipykernel
+#   - moviepy
