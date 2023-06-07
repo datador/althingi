@@ -80,8 +80,11 @@ x-airflow-common:
     - /home/althingi/althingi/data:/data
   user: "50000:0"
   depends_on:
-    - redis
-    - postgres
+    &airflow-common-depends-on
+    redis:
+      condition: service_healthy
+    postgres:
+      condition: service_healthy
 
 services:
   postgres:
