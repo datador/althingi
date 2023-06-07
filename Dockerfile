@@ -19,7 +19,7 @@ USER airflow
 
 COPY requirements.txt .
 COPY setup.py .
-COPY src/ .
+COPY src/ /src/
 
 RUN ls -la
 RUN pip install .
