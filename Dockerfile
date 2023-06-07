@@ -13,13 +13,10 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
     curl -L -o /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
 
-
+USER airflow
 # Copy the necessary files for installation
 COPY . /app
 
-RUN ls -la /app
-
-USER airflow
 RUN ls -la /app
 WORKDIR /app
 
