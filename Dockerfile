@@ -14,12 +14,12 @@ RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
     curl -L -o /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
 
 
-COPY . /app
-
 USER airflow
-WORKDIR /app
 
-#COPY requirements.txt .
+
+COPY requirements.txt .
+COPY setup.py .
+COPY src/ .
 
 RUN ls -la
 RUN pip install .
