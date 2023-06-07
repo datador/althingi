@@ -19,7 +19,9 @@ USER airflow
 
 COPY requirements.txt .
 COPY setup.py .
+#COPY . . # prufa þetta næst
 COPY src/ /src/
+
 
 RUN ls -la
 RUN pip install .
