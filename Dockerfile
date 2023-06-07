@@ -19,8 +19,8 @@ COPY requirements.txt /requirements.txt
 
 USER airflow
 
-RUN pip install --no-cache-dir -r /requirements.txt
-
+RUN pip install --no-cache-dir -r /requirements.txt \
+    && pip install .
 
 
 COPY dags/ /opt/airflow/dags/
