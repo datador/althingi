@@ -1,4 +1,6 @@
-FROM arm64v8/python:3.8-slim-buster
+FROM apache/airflow:latest
+
+USER root
 
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -7,16 +9,15 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install apache-airflow
-
-COPY requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 # download isl.traineddata
 RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
     wget -O /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
 
-COPY dags/ /root/airflow/dags/
+
+COPY dags/ /opt/airflow/dags/
 COPY src/ /src/
 
-USER root
+USER airflow
