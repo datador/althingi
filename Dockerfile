@@ -20,6 +20,7 @@ RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
 USER airflow
 COPY setup.py /setup.py
 COPY src/ /src/
+COPY requirements.txt/ /requirements.txt/
 RUN ls -la && \
     pip install --no-cache-dir -r requirements.txt && \
     pip install .
