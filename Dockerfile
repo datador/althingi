@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 
 # download isl.traineddata
 RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
-    wget -O /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
+    curl -L -o /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
 
 
 COPY requirements.txt .
