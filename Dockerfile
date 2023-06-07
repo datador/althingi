@@ -14,15 +14,12 @@ RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
     curl -L -o /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
 
 USER airflow
-# Copy the necessary files for installation
-COPY . /app
-
-RUN ls -la /app
 WORKDIR /app
 
-RUN ls -la && \
-    pip install --no-cache-dir -r requirements.txt && \
-    pip install .
+COPY requirements.txt .
+RUN ls -la
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install .
 
 COPY src/ /src/
 COPY dags/ /opt/airflow/dags/
