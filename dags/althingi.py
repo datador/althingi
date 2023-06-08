@@ -2,16 +2,16 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
 
-from src.download.get_videos import download_meetings
-from src.transform.to_audio import get_audio
-from src.processing.processing import process_video
-from src.processing.process_audio import process_raw_audio
-from src.processing.process_audio import label_processed_audio
-from src.google.gcs import AudioProcessor
+from althingi.src.download.get_videos import download_meetings
+from althingi.src.transform.to_audio import get_audio
+from althingi.src.processing.processing import process_video
+from althingi.src.processing.process_audio import process_raw_audio
+from althingi.src.processing.process_audio import label_processed_audio
+from althingi.src.google.gcs import AudioProcessor
 
 import numpy as np
 
-project_dir = 'C:/repos/althyngi/' # change to 'mnt/myssd/' when running on raspberry
+project_dir = '/data/' # change to 'mnt/myssd/' when running on raspberry
 
 def download_videos():
     download_meetings(first_meeting=110, max_downloads='all', max_retries=20, logging=True)
