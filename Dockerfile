@@ -16,8 +16,8 @@ RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
 
 USER airflow
 
-# COPY requirements.txt .
-# COPY setup.py .
+COPY requirements.txt .
+COPY setup.py .
 #COPY . .
 COPY src /src
 
