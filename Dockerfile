@@ -20,7 +20,7 @@ USER airflow
 COPY requirements.txt .
 COPY setup.py .
 #COPY . . # prufa þetta næst
-COPY src/ /src/
+COPY src /src
 
 
 RUN ls -la
@@ -28,7 +28,7 @@ RUN pip install .
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-COPY src/ /src/
+#COPY src/ /src/
 COPY dags/ /opt/airflow/dags/
 
 
