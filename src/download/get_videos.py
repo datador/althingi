@@ -1,10 +1,13 @@
-def download_meetings(first_meeting=112, max_downloads='all', max_retries=20, logging=True):
+def download_meetings(project_dir=None, first_meeting=110, max_downloads='all', max_retries=50, logging=True):
     import os
     import time
     import requests
     from bs4 import BeautifulSoup
     from tqdm import tqdm
     from src.web.get_meetings_id import get_max_fundarnr
+
+    if project_dir is not None:
+        os.chdir(project_dir)
 
     # Ensure videos directory exists
     if not os.path.exists('videos'):
@@ -100,5 +103,5 @@ def download_meetings(first_meeting=112, max_downloads='all', max_retries=20, lo
                         if retries == 0:
                             print(f"Max retries reached for meeting {i}. Skipping the download.")
                         else:
-                            print(f"Retrying download for meeting {i} in 5 seconds...")
-                            time.sleep(5)  # Wait for 5 seconds before retrying
+                            print(f"Retrying download for meeting {i} in 2 seconds...")
+                            time.sleep(2)  # Wait for 2 seconds before retrying
