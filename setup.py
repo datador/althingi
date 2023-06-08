@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='althingi',
+    name='src',
     version='0.1.0',
     description='processing althingi',
     author='Halldor Kristinsson',

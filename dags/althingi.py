@@ -2,12 +2,12 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
 
-from althingi.download.get_videos import download_meetings
-from althingi.transform.to_audio import get_audio
-from althingi.processing.processing import process_video
-from althingi.processing.process_audio import process_raw_audio
-from althingi.processing.process_audio import label_processed_audio
-from althingi.google.gcs import AudioProcessor
+from src.download.get_videos import download_meetings
+from src.transform.to_audio import get_audio
+from src.processing.processing import process_video
+from src.processing.process_audio import process_raw_audio
+from src.processing.process_audio import label_processed_audio
+from src.google.gcs import AudioProcessor
 
 
 import numpy as np
