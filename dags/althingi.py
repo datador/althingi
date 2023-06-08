@@ -35,18 +35,18 @@ def process_audio():
 def label_audio():
     label_processed_audio()
 
-def upload_gcs():
-    gcs_processor = AudioProcessor('SA/sa-althingi.json', 'althingi-audio-bucket')
-    gcs_processor.upload_files_to_bucket(project_dir + 'audio/labeled/20230601T132241-althingi-115')
+# def upload_gcs():
+#     gcs_processor = AudioProcessor('SA/sa-althingi.json', 'althingi-audio-bucket')
+#     gcs_processor.upload_files_to_bucket(project_dir + 'audio/labeled/20230601T132241-althingi-115')
 
-def transcribe_gcs():
-    gcs_processor = AudioProcessor(project_dir+'SA/sa-althingi.json', 'althingi-audio-bucket')
-    gcs_processor.transcribe_audio_files(
-        '20230601T132241-althingi-115',
-        project_dir+'text/labeled/20230601T132241-althingi-115',
-        'V1',
-        max_transcriptions=1
-    )
+# def transcribe_gcs():
+#     gcs_processor = AudioProcessor(project_dir+'SA/sa-althingi.json', 'althingi-audio-bucket')
+#     gcs_processor.transcribe_audio_files(
+#         '20230601T132241-althingi-115',
+#         project_dir+'text/labeled/20230601T132241-althingi-115',
+#         'V1',
+#         max_transcriptions=1
+#     )
 
 default_args = {
     'start_date': datetime(2023, 6, 1),
@@ -89,16 +89,16 @@ t5 = PythonOperator(
     dag=dag,
 )
 
-t6 = PythonOperator(
-    task_id='process_gcs',
-    python_callable=upload_gcs,
-    dag=dag,
-)
+# t6 = PythonOperator(
+#     task_id='process_gcs',
+#     python_callable=upload_gcs,
+#     dag=dag,
+# )
 
-t7 = PythonOperator(
-    task_id='process_gcs',
-    python_callable=transcribe_gcs,
-    dag=dag,
-)
+# t7 = PythonOperator(
+#     task_id='process_gcs',
+#     python_callable=transcribe_gcs,
+#     dag=dag,
+# )
 
-t1 >> t2 >> t3 >> t4 >> t5 >> t6 >> t7
+t1 >> t2 >> t3 >> t4 >> t5 #>> t6 >> t7
