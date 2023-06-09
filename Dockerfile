@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
     curl -L -o /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
 
-RUN chown -R airflow:airflow /opt/airflow/data
+RUN chown -R airflow:airflow /home/althingi/althingi/data && \
+    chmod -R 777 /home/althingi/althingi/data
 
 ENV PYTHONPATH=/opt/airflow/src
 
@@ -29,8 +30,6 @@ RUN ls -la
 RUN pip install .
 RUN pip install --no-cache-dir -r requirements.txt
 
-
-#COPY src/ /src/
 COPY dags/ /opt/airflow/dags/
 
 
