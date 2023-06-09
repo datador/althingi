@@ -1,4 +1,4 @@
-def download_meetings(project_dir=None, first_meeting=110, max_downloads='all', max_retries=50, logging=True):
+def download_meetings(first_meeting=110, max_downloads='all', max_retries=50, logging=True):
     import os
     import time
     import requests
@@ -6,10 +6,8 @@ def download_meetings(project_dir=None, first_meeting=110, max_downloads='all', 
     from tqdm import tqdm
     from src.web.get_meetings_id import get_max_fundarnr
 
-    if project_dir is not None:
-        os.chdir(project_dir)
 
-    # Ensure videos directory exists
+    print(f"Current working directory: {os.getcwd()}")
     if not os.path.exists('videos'):
         os.makedirs('videos')
 

@@ -1,7 +1,10 @@
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-from datetime import datetime
 from airflow.models import Variable
+
+import numpy as np
+from datetime import datetime
+import os
 
 from src.download.get_videos import download_meetings
 from src.transform.to_audio import get_audio
@@ -11,18 +14,18 @@ from src.processing.process_audio import label_processed_audio
 from src.google.gcs import AudioProcessor
 
 
-import numpy as np
-
 # Retrieve the values of the Airflow variables
 project_dir = Variable.get("project_dir", default_var="/data/")
 first_meeting = int(Variable.get("first_meeting", default_var="110"))
 max_retries = int(Variable.get("max_retries", default_var="50"))
 
+os.chdir(project_dir)
+
 def download_videos():
-    download_meetings(project_dir=project_dir, first_meeting=first_meeting, max_downloads='all', max_retries=max_retries, logging=True)
+    download_meetings(first_meeting=first_meeting, max_downloads='all', max_retries=max_retries, logging=True)
 
 def transform_to_audio():
-    get_audio(video_dir=project_dir+'/videos', audio_dir=project_dir+'/audio/raw', video_format='.mp4', audio_format='.wav')
+    get_audio(video_dir='/videos', audio_dir='/audio/raw', video_format='.mp4', audio_format='.wav')
 
 def process_videos():
     process_video(video_dir=project_dir+'/videos', log_dir=project_dir+'/logs', 
