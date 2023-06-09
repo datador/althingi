@@ -39,7 +39,7 @@ def process_videos():
 def process_audio():
     process_raw_audio()
 
-def label_audio(party_mapping=):
+def label_audio(party_mapping=party_mapping):
     label_processed_audio()
 
 def upload_gcs():
