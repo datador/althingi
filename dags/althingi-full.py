@@ -8,7 +8,7 @@ import os
 
 from src.download.get_videos import download_meetings
 from src.transform.to_audio import get_audio
-from src.processing.processing import process_video
+from src.processing.processing_v2 import process_video
 from src.processing.process_audio import process_raw_audio
 from src.processing.process_audio import label_processed_audio
 from src.google.gcs import AudioProcessor
