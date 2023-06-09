@@ -211,7 +211,7 @@ def process_raw_audio(raw_dir='audio/raw', processed_dir='audio/processed'):
 import os
 import shutil
 
-def label_processed_audio(processed_dir='audio/processed', labeled_dir='audio/labeled'):
+def label_processed_audio(party_mapping='src/data/party_mapping.json', processed_dir='audio/processed', labeled_dir='audio/labeled'):
     """
     Takes processed audio files and maps them to the 'labeled_dir' directory based on the party mapping file.
 
@@ -220,7 +220,7 @@ def label_processed_audio(processed_dir='audio/processed', labeled_dir='audio/la
         labeled_dir (str): The directory where labeled audio files will be saved. Default is 'audio/labeled'.
     """
     # Load party mapping from JSON file
-    party_mapping_file = 'src/data/party_mapping.json'
+    party_mapping_file = party_mapping
     with open(party_mapping_file, 'r') as f:
         party_mapping = json.load(f)
 

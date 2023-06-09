@@ -18,7 +18,7 @@ from src.google.gcs import AudioProcessor
 project_dir = Variable.get("project_dir", default_var="/data/")
 first_meeting = int(Variable.get("first_meeting", default_var="110"))
 max_retries = int(Variable.get("max_retries", default_var="50"))
-
+party_mapping = Variable.get("party_mapping_dir", default_var="/src/data/party_mapping.json")
 os.chdir(project_dir)
 
 def download_videos():
@@ -39,7 +39,7 @@ def process_videos():
 def process_audio():
     process_raw_audio()
 
-def label_audio():
+def label_audio(party_mapping=):
     label_processed_audio()
 
 def upload_gcs():
