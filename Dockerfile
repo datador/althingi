@@ -15,8 +15,8 @@ RUN mkdir -p /usr/share/tesseract-ocr/4.00/tessdata && \
     curl -L -o /usr/share/tesseract-ocr/4.00/tessdata/isl.traineddata https://github.com/tesseract-ocr/tessdata/blob/main/isl.traineddata
 
 # Set the ownership and permissions for the data directory
-RUN sudo chown -R airflow:airflow /home/althingi/althingi/data && \
-    sudo chmod -R 777 /home/althingi/althingi/data
+RUN chown -R airflow:airflow /home/althingi/althingi/data && \
+    chmod -R 777 /home/althingi/althingi/data
 
 ENV PYTHONPATH=/opt/airflow/src
 
