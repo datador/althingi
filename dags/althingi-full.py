@@ -25,7 +25,7 @@ def download_videos():
     download_meetings(first_meeting=first_meeting, max_downloads='all', max_retries=max_retries, logging=True)
 
 def transform_to_audio():
-    get_audio(video_dir='/videos', audio_dir='/audio/raw', video_format='.mp4', audio_format='.wav')
+    get_audio(video_dir=project_dir+'/videos', audio_dir=project_dir+'/audio/raw', video_format='.mp4', audio_format='.wav')
 
 def process_videos():
     process_video(video_dir=project_dir+'/videos', log_dir=project_dir+'/logs', 
